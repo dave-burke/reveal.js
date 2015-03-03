@@ -20,22 +20,46 @@ There are lots of people who understand the need for privacy, but don't know how
 
 ### What is asymmetric cryptography
 
-Review symmetric cryptography: encrypting a file with a password.
-How do we share the password? What if we don't even know the other person? (journalists)
-What if there were two passwords? One to encrypt, and one to decrypt.
-You could share the "locking" key publicly and keep the "unlock" key secret. Then anyone could send you secret messages that only you can read.
-The principle also works in reverse.
-You could share the "unlock" key publicly. Then when you publish messages you could lock them with your private "locking" key.
-	Anyone could read the message, but they would know that only you could have written the message because it was "locked" with your secret key.
+### Alice & Bob Symmetric Keys
 
-### Man in the middle attacks
+- Dave wants to send a message to [TM]
+	Dave (letter) | | TM
+- But evil Mal wants to intercept the message
+	Dave (letter) | Mal | TM
+- He puts it in a box and locks it
+	Dave (box) | Mal | TM
+- He sends it to TM
+	Dave | Mal | TM (box)
+- And TM unlocks it with a duplicate key
+	Dave | Mal | TM (letter)
+- But how does TM get a duplicate key?
 
-How do you know you have the right key?
+#### Alice and Bob PK crypto
 
-### Verifying keys
+- Dave wants to send a message to [TM]
+	Dave (letter) | | TM
+- But evil Mal wants to intercept the message
+	Dave (letter) | Mal | TM
+- Dave asks TM to send him a box with an open padlock
+	Dave (letter) | Mal | TM (box)
+- But *keep* the key
+	Dave (box) | Mal | TM (key)
+- Now Dave can lock the message and send it back to TM without ever sending a key
 
-Show the other person the key you have, and they confirm it really belongs to them.
-Be ready to confirm what your key is.
+#### Alice and Bob Man-in-the-middle
+
+- What if Mal switches the boxes?
+	Dave (boxB) | (keyB) Mal (boxA) | TM (keyA)
+- Now when Dave sends the box back, Mal can open it, put it's contents in boxA and send it to TM.
+- Dave has to visit TM first to verify the key.
+- Are we right back where we started?
+- No! Dave and TM can verify keys over video chat -- impossible to spoof.
+	Dave (box) | Mal | TM (key)
+	        \__|Skype|__/
+- OR: If Dave and TM are both friends with Calvin, and Calvin has verified TM's key, then Dave can choose to take Calvin's word for it.
+	Dave (box) | Mal | TM (key)
+	        \__|_Cal_|__/
+- In either case, as long as Mal can't fake the box from TM, it doesn't matter whether he can copy the box.
 
 ## What
 
