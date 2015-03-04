@@ -47,7 +47,8 @@
 						<h1>Protect Your Privacy with PGP</h1>
 						<p class="fragment fade-in">PGP (Pretty Good Privacy) protects your privacy
 						with high quality end-to-end encryption that <i>YOU</i> control.</p>
-						<p class="fragment fade-in">...but why care about that?</p>
+						<p class="fragment fade-in">What does that even mean?</p>
+						<p class="fragment fade-in">Why care about that?</p>
 					</section>
 					<section>
 						<p>What's in your email?</p>
@@ -62,6 +63,10 @@
 					<section>
 						<h2>Symmetric Cryptography</h2>
 						<img alt="diagram" src="images/sym1.png" class="diagram"/>
+						<div class="fragment fade-in" style="width: 5em; height: 4em; position: absolute; top: 3em; left: 10em; z-index: -1; background-color: gray !important;">
+							<br/><br/>Public
+						</div>
+						<p class="fragment fade-in">How do you share the key?</p>
 						<aside class="notes">
 							Demo with combo lock?
 						</aside>
@@ -69,6 +74,9 @@
 					<section>
 						<h2>Asymmetric Cryptography</h2>
 						<img alt="diagram" src="images/asym1.png" class="diagram"/>
+						<div class="fragment fade-in" style="width: 5em; height: 7em; position: absolute; top: 3em; left: 10em; z-index: -1; background-color: gray !important;">
+							<br/><br/>Public
+						</div>
 						<aside class="notes">
 							Demo with key lock?
 						</aside>
@@ -94,6 +102,10 @@
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+				keyboard: {
+					39: 'next',
+					37: 'prev',
+				},
 				controls: false,
 				progress: true,
 				history: true,
