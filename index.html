@@ -20,12 +20,116 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.highlight {
+				color: #1b91ff;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Free Software</h1>
+					<p><em>Control the computers that control your world.</em></p>
+				</section>
+				<section>
+					<h1>Four Freedoms</h1>
+					<ol>
+						<li>Freedom to <span class="highlight">use</span> the software</li>
+						<li><span data-fragment-index="1" class="fragment fade-in">Freedom to <span class="highlight">learn</span> about and <span class="highlight">change</span> the software</span></li>
+						<li></li>
+						<li></li>
+					</ol>
+					<aside class="notes">
+						<h5>Freddom to use</h5>
+						<ul>
+							<li>No restrictions like "For personal use only", or "One license per machine"</li>
+							<li>Occulus Rift SDK can't be used with competing products</li>
+						</ul>
+						<h5>Freedom to learn/change</h5>
+						<p>
+							Two parts:
+							<ol>
+								<li>Learn how it works</li>
+								<ul>
+									<li>Audi and Volkswagon both cheated on emissions tests.</li>
+								</ul>
+								<li>Change it to make it do what you wish</li>
+								<ul>
+									<li>HP printers were upgraded to reject 3rd party cartridges that were previously accepted.</li>
+								</ul>
+							</ol>
+						</p>
+					</aside>
+				</section>
+				<section>
+					<section>
+						<h1>Source code</h1>
+						<pre><code>
+printf("Hello World");
+						</code></pre>
+					</section>
+					<section>
+						<h1>Computer code</h1>
+						<pre><code>
+01100011 00101110 01110011 01101111 00101110 00110110
+00000000 01110000 01110010 01101001 01101110 01110100
+01100110 00000000 01011111 01011111 01100011 01111000
+01100001 01011111 01100110 01101001 01101110 01100001
+01101100 01101001 01111010 01100101 00000000 01011111
+01011111 01101100 01101001 01100010 01100011 01011111
+01110011 01110100 01100001 01110010 01110100 01011111
+01101101 01100001 01101001 01101110 00000000 01011111
+01001001 01010100 01001101 01011111 01100100 01100101
+01110010 01100101 01100111 01101001 01110011 01110100
+01100101 01110010 01010100 01001101 01000011 01101100
+01101111 01101110 01100101 01010100 01100001 01100010
+						</code></pre>
+					</section>
+					<section>
+						<h1>Assembly code</h1>
+						<pre><code>
+.LC0:
+	.string	"Hello World"
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	leaq	.LC0(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h1>Four Freedoms</h1>
+					<ol>
+						<li>Freedom to <span class="highlight">use</span> the software</li>
+						<li>Freedom to <span class="highlight">learn</span> about and <span class="highlight">change</span> the software</span></li>
+						<li><span data-fragment-index="1" class="fragment fade-in">Freedom to <span class="highlight">share</span> the software</span></li>
+						<li><span data-fragment-index="1" class="fragment fade-in">Freedom to <span class="highlight">share</span> your changes</span></li>
+					</ol>
+					<aside class="notes">
+						<h5>Freedom to share</h5>
+						<p>
+							You can't code, but others can, and they can provide an alternative to the authoritarianism of a single organization.
+
+							<ul>
+								<li>LG and Sonos broke devices if people didn't agree to accept a new privacy policy.</li>
+								<li>Playstation 3 removes functionality (they were sued, and paid a class action)</li>
+							</ul>
+						</p>
+					</aside>
+				</section>
 			</div>
 		</div>
 
@@ -37,6 +141,9 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				controls: false,
+				history: true,
+				loop: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
