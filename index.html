@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Free Software and You</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -12,12 +12,35 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			.highlight {
+				color: #1b91ff;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Free Software</h1>
+					<p><em>Control the computers that control your world.</em></p>
+				</section>
+				<section>
+					<h1>Four Freedoms</h1>
+					<ol>
+						<li>Freedom to <span class="highlight">use</span> the software however you wish</li>
+						<li><span data-fragment-index="1" class="fragment fade-in">Freedom to <span class="highlight">learn</span> about and <span class="highlight">change</span> the software</span></li>
+						<li><span data-fragment-index="2" class="fragment fade-in">Freedom to <span class="highlight">share</span> the software</span></li>
+						<li><span data-fragment-index="2" class="fragment fade-in">Freedom to <span class="highlight">share</span> your changes</span></li>
+					</ol>
+					<aside class="notes">
+						<ul>
+							<li><strong>USE</strong> -  Occulus Rift</li>
+							<li><strong>LEARN</strong> - Volkswagon</li>
+							<li><strong>SHARE</strong> - HP Printers</li>
+						</ul>
+					</aside>
+				</section>
 			</div>
 		</div>
 
@@ -33,7 +56,9 @@
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+				controls: false,
+				history: true,
 			});
 		</script>
 	</body>
