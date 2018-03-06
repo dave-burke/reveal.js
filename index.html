@@ -192,6 +192,46 @@ new Vue({
 				</section>
 				<section>
 					<section>
+						<h2>Shortcuts</h2>
+						<pre><code data-trim>
+new Vue({
+	el: '#example-shortcuts',
+	template: '<div @click="handleClick" :class="className">Hello, VueJS!</div>',
+	data: function(){
+		return {
+			className: 'normal'
+		}
+	},
+	methods: {
+		handleClick: function(e){
+			this.className = 'green'
+		}
+	}
+});
+						</code></pre>
+					</section>
+					<section>
+<div id="example-shortcuts"></div>
+<script>
+new Vue({
+	el: '#example-shortcuts',
+	template: '<div @click="handleClick" :class="className">Hello, VueJS!</div>',
+	data: function(){
+		return {
+			className: 'normal'
+		}
+	},
+	methods: {
+		handleClick: function(e){
+			this.className = 'green'
+		}
+	}
+});
+</script>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>Components</h2>
 						<pre><code data-trim>
 Vue.component('welcome-message', {
@@ -253,46 +293,6 @@ new Vue({
 		el: '#example-props',
 		template: '<welcome-message message="Hello from the parent Vue!"></welcome-message>'
 	});
-</script>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Shortcuts</h2>
-						<pre><code data-trim>
-new Vue({
-	el: '#example-shortcuts',
-	template: '<div @click="handleClick" :class="className">Hello, VueJS!</div>',
-	data: function(){
-		return {
-			className: 'normal'
-		}
-	},
-	methods: {
-		handleClick: function(e){
-			this.className = 'green'
-		}
-	}
-});
-						</code></pre>
-					</section>
-					<section>
-<div id="example-shortcuts"></div>
-<script>
-new Vue({
-	el: '#example-shortcuts',
-	template: '<div @click="handleClick" :class="className">Hello, VueJS!</div>',
-	data: function(){
-		return {
-			className: 'normal'
-		}
-	},
-	methods: {
-		handleClick: function(e){
-			this.className = 'green'
-		}
-	}
-});
 </script>
 					</section>
 				</section>
