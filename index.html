@@ -56,11 +56,11 @@
 						<pre><code data-trim>
 &lt;script src="https://unpkg.com/vue@2.5.13/dist/vue.js"&gt;&lt;/script&gt;
 
-&lt;div id="app"&gt;&lt;/div&gt;
+&lt;div id="example-bootstrap"&gt;&lt;/div&gt;
 
 &lt;script&gt;
 	new Vue({
-		el: '#app',
+		el: '#example-bootstrap',
 		template: '<div>Hello, VueJS!</div>'
 	});
 &lt;/script&gt;
@@ -68,11 +68,11 @@
 					</section>
 					<section>
 						<h2>Basic usage (live)</h2>
-<div id="bootstrap1"></div>
+<div id="example-bootstrap"></div>
 
 <script>
 	new Vue({
-		el: '#bootstrap1',
+		el: '#example-bootstrap',
 		template: '<div>Hello, VueJS!</div>'
 	});
 </script>
@@ -80,14 +80,38 @@
 				</section>
 				<section>
 					<section>
-						<h2>Basic component</h2>
+						<h2>Data</h2>
 						<pre><code data-trim>
+&lt;div id="example-data"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+	new Vue({
+		el: '#example-data',
+		template: '&lt;div&gt;{{message}}&lt;/div&gt;',
+		data: function() {
+			return {
+				message: 'Hello, VueJS!'
+			}
+		}
+	});
+&lt;/script&gt;
 						</code></pre>
 					</section>
 					<section>
-						<h2>Basic component</h2>
-						<pre><code data-trim>
-						</code></pre>
+						<h2>Data (live)</h2>
+<div id="example-data"></div>
+
+<script>
+	new Vue({
+		el: '#example-data',
+		template: '<div>{{message}}</div>',
+		data: function() {
+			return {
+				message: 'Hello, VueJS!'
+			}
+		}
+	});
+</script>
 					</section>
 				</section>
 				<section>
