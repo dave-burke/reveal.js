@@ -192,7 +192,9 @@ new Vue({
             <pre><code data-trim>
 new Vue({
   el: '#example-methods',
-  template: '<div v-on:click="handleClick" v-bind:class="className">Hello, VueJS!</div>',
+  template: `<div v-on:click="handleClick" v-bind:class="className">
+      Hello, VueJS!
+    </div>`,
   data: function() {
     return {
       className: 'normal'
@@ -212,7 +214,9 @@ new Vue({
 <script>
 new Vue({
   el: '#example-methods',
-  template: '<div v-on:click="handleClick" v-bind:class="className">Hello, VueJS!</div>',
+  template: `<div v-on:click="handleClick" v-bind:class="className">
+      Hello, VueJS!
+    </div>`,
   data: function() {
     return {
       className: 'normal'
@@ -233,7 +237,9 @@ new Vue({
             <pre><code data-trim>
 new Vue({
   el: '#example-shortcuts',
-  template: '<div @click="handleClick" :class="className">Hello, VueJS!</div>',
+  template: `<div @click="handleClick" :class="className">
+      Hello, VueJS!
+    </div>`,
   data: function(){
     return {
       className: 'normal'
@@ -252,7 +258,9 @@ new Vue({
 <script>
 new Vue({
   el: '#example-shortcuts',
-  template: '<div @click="handleClick" :class="className">Hello, VueJS!</div>',
+  template: `<div @click="handleClick" :class="className">
+      Hello, VueJS!
+    </div>`,
   data: function(){
     return {
       className: 'normal'
@@ -271,7 +279,7 @@ new Vue({
           <section>
             <h2>Components</h2>
             <pre><code data-trim>
-Vue.component('welcome-message', {
+Vue.component('welcome', {
   template: '<div>{{message}}</div>',
   data: function() {
     return {
@@ -281,7 +289,7 @@ Vue.component('welcome-message', {
 });
 new Vue({
   el: '#example-components',
-  template: '<welcome-message></welcome-message>'
+  template: '<welcome></welcome>'
 });
             </code></pre>
           </section>
@@ -289,7 +297,7 @@ new Vue({
 <div id="example-components"></div>
 
 <script>
-  Vue.component('welcome-message', {
+  Vue.component('welcome', {
     template: '<div>{{message}}</div>',
     data: function() {
       return {
@@ -299,7 +307,7 @@ new Vue({
   });
   new Vue({
     el: '#example-components',
-    template: '<welcome-message></welcome-message>'
+    template: '<welcome></welcome>'
   });
 </script>
           </section>
@@ -308,13 +316,13 @@ new Vue({
           <section>
             <h2>Props</h2>
             <pre><code data-trim>
-Vue.component('welcome-message', {
+Vue.component('welcome', {
   props: ['message'],
   template: '<div>{{message}}</div>',
 });
 new Vue({
   el: '#example-props',
-  template: '<welcome-message message="Hello from the parent Vue!"></welcome-message>'
+  template: `<welcome message="Hello from the parent!"></welcome>`
 });
             </code></pre>
           </section>
@@ -322,13 +330,13 @@ new Vue({
 <div id="example-props"></div>
 
 <script>
-  Vue.component('welcome-message', {
+  Vue.component('welcome', {
     props: ['message'],
     template: '<div>{{message}}</div>',
   });
   new Vue({
     el: '#example-props',
-    template: '<welcome-message message="Hello from the parent Vue!"></welcome-message>'
+    template: '<welcome message="Hello from the parent!"></welcome>'
   });
 </script>
           </section>
