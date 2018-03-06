@@ -154,15 +154,10 @@ new Vue({
 						<h2>Components</h2>
 						<pre><code data-trim>
 Vue.component('welcome-message', {
-	template: '<div v-on:click=handleClick>{{message}}</div>',
+	template: '<div>{{message}}</div>',
 	data: function() {
 		return {
 			message: 'Hello from a Vue component!'
-		}
-	},
-	methods: {
-		handleClick: function(e){
-			this.message += ' still with interactivity!';
 		}
 	}
 });
@@ -177,15 +172,10 @@ new Vue({
 
 <script>
 	Vue.component('welcome-message', {
-		template: '<div v-on:click=handleClick>{{message}}</div>',
+		template: '<div>{{message}}</div>',
 		data: function() {
 			return {
 				message: 'Hello from a Vue component!'
-			}
-		},
-		methods: {
-			handleClick: function(e){
-				this.message += ' still with interactivity!';
 			}
 		}
 	});
@@ -206,12 +196,7 @@ Vue.component('welcome-message', {
 });
 new Vue({
 	el: '#example-props',
-	template: '<welcome-message v-bind:message="parentMessage"></welcome-message>',
-	data: function() {
-		return {
-			parentMessage: 'Hello from the parent Vue!'
-		}
-	}
+	template: '<welcome-message message="Hello from the parent Vue!"></welcome-message>'
 });
 						</code></pre>
 					</section>
@@ -225,12 +210,7 @@ new Vue({
 	});
 	new Vue({
 		el: '#example-props',
-		template: '<welcome-message v-bind:message="parentMessage"></welcome-message>',
-		data: function() {
-			return {
-				parentMessage: 'Hello from the parent Vue!'
-			}
-		}
+		template: '<welcome-message message="Hello from the parent Vue!"></welcome-message>'
 	});
 </script>
 					</section>
