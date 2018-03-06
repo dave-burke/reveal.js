@@ -121,10 +121,8 @@ new Vue({
 new Vue({
   el: '#example-data',
   template: '<div>{{message}}</div>',
-  data: function() {
-    return {
-      message: 'Hello, VueJS!'
-    }
+  data:  {
+    message: 'Hello, VueJS!'
   }
 });
             </code></pre>
@@ -136,10 +134,8 @@ new Vue({
 new Vue({
   el: '#example-data',
   template: '<div>{{message}}</div>',
-  data: function() {
-    return {
-      message: 'Hello, VueJS!'
-    }
+  data: {
+    message: 'Hello, VueJS!'
   }
 });
 </script>
@@ -157,10 +153,8 @@ new Vue({
 new Vue({
   el: '#example-binding',
   template: '<div v-bind:class="className">Hello, VueJS!</div>',
-  data: function() {
-    return {
-      className: 'green'
-    }
+  data: {
+    className: 'green'
   }
 });
             </code></pre>
@@ -177,10 +171,8 @@ new Vue({
 new Vue({
   el: '#example-binding',
   template: '<div v-bind:class="className">Hello, VueJS!</div>',
-  data: function() {
-    return {
-      className: 'green'
-    }
+  data: {
+    className: 'green'
   }
 });
 </script>
@@ -195,10 +187,8 @@ new Vue({
   template: `<div v-on:click="handleClick" v-bind:class="className">
       Hello, VueJS!
     </div>`,
-  data: function() {
-    return {
-      className: 'normal'
-    }
+  data: {
+    className: 'normal'
   },
   methods: {
     handleClick: function(e){
@@ -217,10 +207,8 @@ new Vue({
   template: `<div v-on:click="handleClick" v-bind:class="className">
       Hello, VueJS!
     </div>`,
-  data: function() {
-    return {
-      className: 'normal'
-    }
+  data: {
+    className: 'normal'
   },
   methods: {
     handleClick: function(e){
@@ -240,10 +228,8 @@ new Vue({
   template: `<div @click="handleClick" :class="className">
       Hello, VueJS!
     </div>`,
-  data: function(){
-    return {
-      className: 'normal'
-    }
+  data: {
+    className: 'normal'
   },
   methods: {
     handleClick: function(e){
@@ -261,10 +247,8 @@ new Vue({
   template: `<div @click="handleClick" :class="className">
       Hello, VueJS!
     </div>`,
-  data: function(){
-    return {
-      className: 'normal'
-    }
+  data: {
+    className: 'normal'
   },
   methods: {
     handleClick: function(e){
