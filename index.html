@@ -153,6 +153,54 @@ new Vue({
 					</section>
 				</section>
 				<section>
+					<section>
+						<h2>Components</h2>
+						<pre><code data-trim>
+Vue.component('welcome-message', {
+	template: '<div v-on:click=handleClick>{{message}}</div>',
+	data: function() {
+		return {
+			message: 'Hello from a Vue component!'
+		}
+	},
+	methods: {
+		handleClick: function(e){
+			this.message += ' still with interactivity!';
+		}
+	}
+});
+new Vue({
+	el: '#example-components',
+	template: '<welcome-message></welcome-message>'
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>Components (live)</h2>
+<div id="example-components"></div>
+
+<script>
+	Vue.component('welcome-message', {
+		template: '<div v-on:click=handleClick>{{message}}</div>',
+		data: function() {
+			return {
+				message: 'Hello from a Vue component!'
+			}
+		},
+		methods: {
+			handleClick: function(e){
+				this.message += ' still with interactivity!';
+			}
+		}
+	});
+	new Vue({
+		el: '#example-components',
+		template: '<welcome-message></welcome-message>'
+	});
+</script>
+					</section>
+				</section>
+				<section>
 					<h2>.vue component</h2>
 					<pre><code data-trim>
 					</code></pre>
