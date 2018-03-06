@@ -224,7 +224,7 @@ new Vue({
           <pre><code data-trim>
 &lt;div v-on:click="handleClick" v-bind:class="className"&gt;
           </code></pre>
-	  	Is exactly the same as
+            Is exactly the same as
           <pre><code data-trim>
 &lt;div @click="handleClick" :class="className"&gt;
           </code></pre>
@@ -294,6 +294,26 @@ new Vue({
   });
 </script>
           </section>
+        </section>
+        <section>
+          <h2>Single-file Components</h2>
+          <pre><code data-trim>
+&lt;template&gt;
+  &lt;div v-bind:class="className"&gt;Hello, VueJS!&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+module.exports = {
+  data: {
+    className: 'green'
+  }
+}
+&lt;/script&gt;
+&lt;style scoped&gt;
+.green {
+  color: green;
+}
+&lt;/style&gt;
+          </code></pre>
         </section>
 
       </div>
