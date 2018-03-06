@@ -82,19 +82,15 @@
 					<section>
 						<h2>Data</h2>
 						<pre><code data-trim>
-&lt;div id="example-data"&gt;&lt;/div&gt;
-
-&lt;script&gt;
-	new Vue({
-		el: '#example-data',
-		template: '&lt;div&gt;{{message}}&lt;/div&gt;',
-		data: function() {
-			return {
-				message: 'Hello, VueJS!'
-			}
+new Vue({
+	el: '#example-data',
+	template: '&lt;div&gt;{{message}}&lt;/div&gt;',
+	data: function() {
+		return {
+			message: 'Hello, VueJS!'
 		}
-	});
-&lt;/script&gt;
+	}
+});
 						</code></pre>
 					</section>
 					<section>
@@ -102,12 +98,54 @@
 <div id="example-data"></div>
 
 <script>
+new Vue({
+	el: '#example-data',
+	template: '<div>{{message}}</div>',
+	data: function() {
+		return {
+			message: 'Hello, VueJS!'
+		}
+	}
+});
+</script>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Methods</h2>
+						<pre><code data-trim>
+new Vue({
+	el: '#example-methods',
+	template: '&lt;div v-on:click=handleClick&gt;{{message}}&lt;/div&gt;',
+	data: function() {
+		return {
+			message: 'Hello, VueJS!'
+		}
+	},
+	methods: {
+		handleClick: function(e){
+			this.message += ' Now with interactivity!';
+		}
+	}
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>Methods(live)</h2>
+<div id="example-methods"></div>
+
+<script>
 	new Vue({
-		el: '#example-data',
-		template: '<div>{{message}}</div>',
+		el: '#example-methods',
+		template: '<div v-on:click=handleClick>{{message}}</div>',
 		data: function() {
 			return {
 				message: 'Hello, VueJS!'
+			}
+		},
+		methods: {
+			handleClick: function(e){
+				this.message += ' Now with interactivity!';
 			}
 		}
 	});
