@@ -201,6 +201,46 @@ new Vue({
 					</section>
 				</section>
 				<section>
+					<section>
+						<h2>Props</h2>
+						<pre><code data-trim>
+Vue.component('welcome-message', {
+	props: ['message'],
+	template: '<div>{{message}}</div>',
+});
+new Vue({
+	el: '#example-props',
+	template: '<welcome-message v-bind:message="parentMessage"></welcome-message>',
+	data: function() {
+		return {
+			parentMessage: 'Hello from the parent Vue!'
+		}
+	}
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>Props (live)</h2>
+<div id="example-props"></div>
+
+<script>
+	Vue.component('welcome-message', {
+		props: ['message'],
+		template: '<div>{{message}}</div>',
+	});
+	new Vue({
+		el: '#example-props',
+		template: '<welcome-message v-bind:message="parentMessage"></welcome-message>',
+		data: function() {
+			return {
+				parentMessage: 'Hello from the parent Vue!'
+			}
+		}
+	});
+</script>
+					</section>
+				</section>
+				<section>
 					<h2>.vue component</h2>
 					<pre><code data-trim>
 					</code></pre>
