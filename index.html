@@ -110,19 +110,60 @@ new Vue({
 				</section>
 				<section>
 					<section>
+						<h2>Attribute binding</h2>
+						<pre><code data-trim>
+.green {
+	color: green;
+}
+						</code></pre>
+						<pre><code data-trim>
+new Vue({
+	el: '#example-binding',
+	template: '<div v-bind:class="className">Hello, VueJS!</div>',
+	data: function() {
+		return {
+			className: 'green'
+		}
+	}
+});
+						</code></pre>
+					</section>
+					<section>
+<div id="example-binding"></div>
+<style>
+.green {
+	color: green;
+}
+</style>
+
+<script>
+new Vue({
+	el: '#example-binding',
+	template: '<div v-bind:class="className">Hello, VueJS!</div>',
+	data: function() {
+		return {
+			className: 'green'
+		}
+	}
+});
+</script>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>Methods</h2>
 						<pre><code data-trim>
 new Vue({
 	el: '#example-methods',
-	template: '<div v-on:click=handleClick>{{message}}</div>',
+	template: '<div v-on:click="handleClick" v-bind:class="className">Hello, VueJS!</div>',
 	data: function() {
 		return {
-			message: 'Hello, VueJS!'
+			className: 'normal'
 		}
 	},
 	methods: {
 		handleClick: function(e){
-			this.message += ' Now with interactivity!';
+			this.className = 'green';
 		}
 	}
 });
@@ -132,20 +173,20 @@ new Vue({
 <div id="example-methods"></div>
 
 <script>
-	new Vue({
-		el: '#example-methods',
-		template: '<div v-on:click=handleClick>{{message}}</div>',
-		data: function() {
-			return {
-				message: 'Hello, VueJS!'
-			}
-		},
-		methods: {
-			handleClick: function(e){
-				this.message += ' Now with interactivity!';
-			}
+new Vue({
+	el: '#example-methods',
+	template: '<div v-on:click="handleClick" v-bind:class="className">Hello, VueJS!</div>',
+	data: function() {
+		return {
+			className: 'normal'
 		}
-	});
+	},
+	methods: {
+		handleClick: function(e){
+			this.className = 'green';
+		}
+	}
+});
 </script>
 					</section>
 				</section>
