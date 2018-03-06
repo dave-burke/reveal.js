@@ -56,14 +56,14 @@
 						<pre><code data-trim>
 &lt;script src="https://unpkg.com/vue@2.5.13/dist/vue.js"&gt;&lt;/script&gt;
 
-&lt;div id="example-bootstrap"&gt;&lt;/div&gt;
+<div id="example-bootstrap"></div>
 
-&lt;script&gt;
+<script>
 	new Vue({
 		el: '#example-bootstrap',
 		template: '<div>Hello, VueJS!</div>'
 	});
-&lt;/script&gt;
+</script>
 						</code></pre>
 					</section>
 					<section>
@@ -84,7 +84,7 @@
 						<pre><code data-trim>
 new Vue({
 	el: '#example-data',
-	template: '&lt;div&gt;{{message}}&lt;/div&gt;',
+	template: '<div>{{message}}</div>',
 	data: function() {
 		return {
 			message: 'Hello, VueJS!'
@@ -116,7 +116,7 @@ new Vue({
 						<pre><code data-trim>
 new Vue({
 	el: '#example-methods',
-	template: '&lt;div v-on:click=handleClick&gt;{{message}}&lt;/div&gt;',
+	template: '<div v-on:click=handleClick>{{message}}</div>',
 	data: function() {
 		return {
 			message: 'Hello, VueJS!'
