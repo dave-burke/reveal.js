@@ -220,44 +220,14 @@ new Vue({
           </section>
         </section>
         <section>
-          <section>
-            <h2>Shortcuts</h2>
-            <pre><code data-trim>
-new Vue({
-  el: '#example-shortcuts',
-  template: `<div @click="handleClick" :class="className">
-      Hello, VueJS!
-    </div>`,
-  data: {
-    className: 'normal'
-  },
-  methods: {
-    handleClick: function(e){
-      this.className = 'green'
-    }
-  }
-});
-            </code></pre>
-          </section>
-          <section>
-<div id="example-shortcuts"></div>
-<script>
-new Vue({
-  el: '#example-shortcuts',
-  template: `<div @click="handleClick" :class="className">
-      Hello, VueJS!
-    </div>`,
-  data: {
-    className: 'normal'
-  },
-  methods: {
-    handleClick: function(e){
-      this.className = 'green'
-    }
-  }
-});
-</script>
-          </section>
+          <h2>Shortcuts</h2>
+          <pre><code data-trim>
+&lt;div v-on:click="handleClick" v-bind:class="className"&gt;
+          </code></pre>
+	  	Is exactly the same as
+          <pre><code data-trim>
+&lt;div @click="handleClick" :class="className"&gt;
+          </code></pre>
         </section>
         <section>
           <section>
