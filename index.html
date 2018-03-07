@@ -236,7 +236,7 @@ new Vue({
 new Vue({
   el: '#example',
   template: `<div>
-    <input id="text" v-model="text"/>
+    <input v-model="text"/>
     <p>{{text}}</p>
   </div>`,
   data: {
@@ -251,7 +251,7 @@ new Vue({
 new Vue({
   el: '#example-two-way',
   template: `<div>
-    <input id="text" v-model="text"/>
+    <input v-model="text"/>
     <p>{{text}}</p>
   </div>`,
   data: {
@@ -284,7 +284,7 @@ new Vue({
 new Vue({
   el: '#example-conditional',
   template: `<div>
-    <input type="checkbox" id="checkbox" v-model="isChecked"/>
+    <input type="checkbox" v-model="isChecked"/>
     <span v-if="isChecked">Yes</span>
     <span v-else>No</span>
   </div>`,
