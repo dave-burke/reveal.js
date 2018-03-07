@@ -58,12 +58,12 @@
 
 <script>
   new Vue({
-    el: '#example-bootstrap',
+    el: '#example',
     template: '<div>Hello, VueJS!</div>'
   });
 </script>
 
-&lt;div id="example-bootstrap"&gt;&lt;/div&gt;
+&lt;div id="example"&gt;&lt;/div&gt;
             </code></pre>
           </section>
           <section>
@@ -82,7 +82,7 @@
             <h2>Multi-line Template Strings</h2>
             <pre><code data-trim>
 new Vue({
-  el: '#example-bootstrap',
+  el: '#example',
   template: '<div>' +
     'Hello, VueJS!' +
     '</div>'
@@ -93,7 +93,7 @@ new Vue({
             <h2>Multi-line Template Strings</h2>
             <pre><code data-trim>
 new Vue({
-  el: '#example-bootstrap',
+  el: '#example',
   template: '<div>\
     Hello, VueJS!\
     </div>'
@@ -104,7 +104,7 @@ new Vue({
             <h2>Multi-line Template Strings</h2>
             <pre><code data-trim>
 new Vue({
-  el: '#example-bootstrap',
+  el: '#example',
   template: `
     <div>
       Hello, VueJS!
@@ -119,9 +119,9 @@ new Vue({
             <h2>Data</h2>
             <pre><code data-trim>
 new Vue({
-  el: '#example-data',
+  el: '#example',
   template: '<div>{{message}}</div>',
-  data:  {
+  data: {
     message: 'Hello, VueJS!'
   }
 });
@@ -151,7 +151,7 @@ new Vue({
             </code></pre>
             <pre><code data-trim>
 new Vue({
-  el: '#example-binding',
+  el: '#example',
   template: '<div v-bind:class="className">Hello, VueJS!</div>',
   data: {
     className: 'green'
@@ -183,7 +183,7 @@ new Vue({
             <h2>Methods</h2>
             <pre><code data-trim>
 new Vue({
-  el: '#example-methods',
+  el: '#example',
   template: `<div v-on:click="handleClick" v-bind:class="className">
       Hello, VueJS!
     </div>`,
@@ -242,7 +242,7 @@ Vue.component('welcome', {
   }
 });
 new Vue({
-  el: '#example-components',
+  el: '#example',
   template: '<welcome></welcome>'
 });
             </code></pre>
@@ -275,7 +275,7 @@ Vue.component('welcome', {
   template: '<div>{{message}}</div>',
 });
 new Vue({
-  el: '#example-props',
+  el: '#example',
   template: `<welcome message="Hello from the parent!"></welcome>`
 });
             </code></pre>
