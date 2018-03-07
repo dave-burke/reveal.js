@@ -268,9 +268,9 @@ new Vue({
 new Vue({
   el: '#example',
   template: `<div>
-    <input type="checkbox" id="checkbox" v-model="isChecked"/>
+    <input type="checkbox" v-model="isChecked"/>
     <span v-if="isChecked">Yes</span>
-    <span v-else>No</span>
+    &lt;span v-else&gt;No&lt;/span&gt;
   </div>`,
   data: {
     isChecked: false
