@@ -231,6 +231,106 @@ new Vue({
         </section>
         <section>
           <section>
+            <h2>Two-way form binding</h2>
+            <pre><code data-trim>
+new Vue({
+  el: '#example',
+  template: `<div>
+    <input id="text" v-model="text"/>
+    <p>{{text}}</p>
+  </div>`,
+  data: {
+    text: 'text'
+  }
+});
+            </code></pre>
+          </section>
+          <section>
+<div id="example-two-way"></div>
+<script>
+new Vue({
+  el: '#example-two-way',
+  template: `<div>
+    <input id="text" v-model="text"/>
+    <p>{{text}}</p>
+  </div>`,
+  data: {
+    text: 'text'
+  }
+});
+</script>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Conditional rendering</h2>
+            <pre><code data-trim>
+new Vue({
+  el: '#example',
+  template: `<div>
+    <input type="checkbox" id="checkbox" v-model="isChecked"/>
+    <span v-if="isChecked">Yes</span>
+    <span v-else>No</span>
+  </div>`,
+  data: {
+    isChecked: false
+  }
+});
+            </code></pre>
+          </section>
+          <section>
+<div id="example-conditional"></div>
+<script>
+new Vue({
+  el: '#example-conditional',
+  template: `<div>
+    <input type="checkbox" id="checkbox" v-model="isChecked"/>
+    <span v-if="isChecked">Yes</span>
+    <span v-else>No</span>
+  </div>`,
+  data: {
+    isChecked: false
+  }
+});
+</script>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Looping</h2>
+            <pre><code data-trim>
+new Vue({
+  el: '#example',
+  template: `<div>
+    <ul>
+      <li v-for="item in items">{{item}}</li>
+    </ul>
+  </div>`,
+  data: {
+    items: ['one','two','three']
+  }
+});
+            </code></pre>
+          </section>
+          <section>
+<div id="example-loop"></div>
+<script>
+new Vue({
+  el: '#example-loop',
+  template: `<div>
+    <ul>
+      <li v-for="item in items">{{item}}</li>
+    </ul>
+  </div>`,
+  data: {
+    items: ['one','two','three']
+  }
+});
+</script>
+          </section>
+        </section>
+        <section>
+          <section>
             <h2>Components</h2>
             <pre><code data-trim>
 Vue.component('welcome', {
