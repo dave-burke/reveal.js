@@ -310,11 +310,9 @@ new Vue({
             <pre><code data-trim>
 new Vue({
   el: '#example',
-  template: `<div>
-    <ul>
-      <li v-for="item in items">{{item}}</li>
-    </ul>
-  </div>`,
+  template: `<ul>
+    <li v-for="item in items">{{item}}</li>
+  </ul>`,
   data: {
     items: ['one','two','three']
   }
@@ -326,11 +324,9 @@ new Vue({
 <script>
 new Vue({
   el: '#example-loop',
-  template: `<div>
-    <ul>
-      <li v-for="item in items">{{item}}</li>
-    </ul>
-  </div>`,
+  template: `<ul>
+    <li v-for="item in items">{{item}}</li>
+  </ul>`,
   data: {
     items: ['one','two','three']
   }
