@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
+    <title>What is Trivia?</title>
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,130 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section>Slide 1</section>
-        <section>Slide 2</section>
+        <section>
+          <h1>What is Trivia Weekend?</h1>
+          <ul class="fragment">
+            <li>KVSC 88.1FM (<a href="http://kvsc.org/listen-live/index.php">Stream it</a>)</li>
+            <li>Friday at 5PM - Sunday at 7PM</li>
+            <li>50 hours of trivia</li>
+            <li>9 questions per hour</li>
+          </ul>
+          <aside class="notes">
+            <ul>
+              <li>St. Cloud University college radio</li>
+              <li>You can listen to KVSC online</li>
+              <li>5pm Friday to 7PM Sunday</li>
+              <li>18 questions in a speed round</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <section>
+            <h1>What Are The Questions Like?</h1>
+            <aside class="notes">
+              Three kinds of questions.
+              Trivia for the internet era.
+              Team-based online scavenger hunt
+            </aside>
+          </section>
+          <section>
+            <h2>Regular Trivia</h2>
+          </section>
+          <section>
+            <div>
+              <p>What word got the Doors banned from the Ed Sullivan Show? (10 points)</p>
+              <!-- <p class="fragment highlight-green">Higher</p>-->
+              <img class="fragment" src="doors.png"/>
+            </div>
+          </section>
+          <section>
+            <p>In this movie Adrian is attending Edward's funeral. He has a flash 
+            back during the service. In the flashback there is a US map with
+            a legend of map points to the right. Give the 11 map points
+            named. (250 points)</p>
+            <p class="fragment green">Black unrest, drugs, anti-war demos,
+            promiscuity, draft dodgers, illegal immigration, murder,
+            prostitution, corruption, extortion, and kidnapping</p>
+            <aside class="notes">
+              First, you need to recognize that this is a reference to the movie
+              Watchmen. Then you need to find a screen shot, blog post, or youtube
+              video referencing the list.
+            </aside>
+          </section>
+          <section>
+            <p>(It's from <i>Watchmen</i>)</p>
+            <video data-autoplay id="watchmen-video" src="watchmen.webm"/>
+          </section>
+          <section>
+            <h2>Audio Trivia</h2>
+          </section>
+          <section>
+            <p>Name the performing artist and song.</p>
+            <audio class="fragment" controls src="audiospeed.mp3"></audio>
+            <p class="fragment green">Red Hot Chili Peppers / Snow (Hey Oh)</p>
+          </section>
+          <section>
+            <p>In order, name everything that is found to be causing this electronic devices malfunction (20 points)</p>
+            <audio class="fragment" controls src="audiotrivia.mp3"></audio>
+            <div class="fragment">
+              <img style="display: inline-block; width: 5em;" src="audio-hat.png"/>
+              <img style="display: inline-block; width: 5em;" src="audio-hammer.png"/>
+              <img style="display: inline-block; width: 5em;" src="audio-horn.png"/>
+              <img style="display: inline-block; width: 5em;" src="audio-house.png"/>
+              <img style="display: inline-block; width: 5em;" src="audio-hamburger.png"/>
+              <img style="display: inline-block; width: 5em;" src="audio-hamster.png"/>
+            </div>
+          </section>
+          <section>
+            <h2>Visual Trivia</h2>
+            <img class="fragment" src="visualtrivia.png"/>
+            <p class="fragment">What is the caption for this image? (15 points)</p>
+            <p class="fragment green">Enjoy Celery: nature's toothbrush for your colon!</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>How can I participate?</h1>
+            <a href="https://caseofbrewskies.com/trivia">caseofbrewskies.com</a>
+          </section>
+          <section>
+            <h2>Register</h2>
+            <p>TODO screenshots</p>
+          </section>
+          <section>
+            <h2>Before Trivia Weekend</h2>
+            <p>TODO visual trivia screen shot</p>
+          </section>
+          <section>
+            <h2>During Trivia Weekend</h2>
+            <p>TODO dashboard screenshot</p>
+            <aside class="notes">
+              Explain process:
+              <ol>
+                <li>DJ reads the question</li>
+                <li>Home base players type in the question</li>
+                <li>All players submit answers</li>
+                <li>Home base players call in the answers</li>
+                <li>Home base players update answer status</li>
+              </ol>
+            </aside>
+          </section>
+          <section>
+            <h2>Bonus: Visit Home Base!</h2>
+            <video data-autoplay id="homebase-video" src="homebase.webm"/>
+          </section>
+          <section>
+            <h1>After Trivia Weekend</h1>
+            <aside class="notes">
+              <p>Results and awards are anounced Sunday night.
+              You can drive to St. Cloud, or more 
+              realistically, stream them.</p>
+            </aside>
+          </section>
+        </section>
+        <section>
+          <h1>Questions?</h1>
+        </section>
       </div>
     </div>
 
@@ -50,6 +172,21 @@
         history: true,
         fragmentInURL: true
       });
+      Reveal.addEventListener( 'fragmentshown', function(e) {
+        const el = e.fragment;
+        if(el.tagName === 'AUDIO'){
+          el.currentTime = 0;
+          el.play();
+        }
+      });
+      Reveal.addEventListener( 'fragmenthidden', function(e) {
+        const el = e.fragment;
+        if(el.tagName === 'AUDIO'){
+          el.currentTime = 0;
+          el.pause();
+        }
+      });
+
     </script>
   </body>
 </html>
