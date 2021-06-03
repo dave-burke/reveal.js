@@ -2,3 +2,13 @@ body {
 	--heading-font: "Roboto", "Verdana", sans-serif;
 	--main-font: "Playfair Display", "Georgia", serif;
 }
+.red {
+	color: #ff2c2d;
+}
+#conclusion .blue,
+.blue {
+	color: #1b91ff;
+}
+.green {
+	color: #17ff2e;
+}
