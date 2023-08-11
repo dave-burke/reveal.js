@@ -6,6 +6,13 @@
 
 ## Introduction
 
+Ask your government whether the program that controls radar guns should be a secret inaccessible to public scrutiny.
+
+Ask your car manufacturer whether the software the controls your breaks should be a secret inaccessible to security researchers.
+
+Ask your doctor whether the programs that control your pacemaker should be secret inaccessible to medical researchers.
+
+
 Software controls more and more of our lives, but who controls that software? Have you ever downloaded an app and wondered what it might be doing behind your back? Have you ever had a favorite application suddenly exhibit a bug that goes completely ignored by the developer? These are the problems that Free Software is meant to prevent.
 
 I'm going to be explaining the definition of Free Software given by the Free Software Foundation. Along the way I'm going to point out the ways that Free Software can make a difference to you, and then I'll close with some ideas for how you can account for this when you make decisions about what software to use.
@@ -40,11 +47,9 @@ The Free Software Foundation would argue that these four freedoms are an ethical
 
 When you are deciding what software to use in your home or business, ask yourself whether you want to blindly trust that the developer will always have your best interest at heart. Ask yourself what you would do if the company disappeared.
 
-Ask your government whether the program that controls radar guns should be a secret inaccessible to public scrutiny.
+On Android, use F-Droid
 
-Ask your car manufacturer whether the software the controls your breaks should be a secret inaccessible to security researchers.
-
-Ask your doctor whether the programs that control your pacemaker should be secret inaccessible to medical researchers.
+Use alternativeto.net
 
 Ultimately this is about ensuring that users have ultimate control over how their computers operate.
 
