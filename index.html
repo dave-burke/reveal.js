@@ -1,40 +1,214 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.7.45">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>reveal.js</title>
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css"><!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Borg Backup</h1>
+      </section>
+      <section>
+        <h2>Requirements</h2>
+        <ul>
+          <li>3-2-1 (3 copies, 2 media types, 1 offsite)</li>
+          <li><em>Client-side</em> Encrypted</li>
+          <li>Incremental</li>
+          <li>Automatic</li>
+          <li>Monitored</li>
+          <li>Free Software</li>
+        </ul>
+        <p class="fragment fade-in">Borg Backup has all of the above, plus deduplication.</p>
+      </section>
+      <section>
+        <h2>Borg CLI usage</h2>
+        <pre><code class="language-shell">
+        borg init --encryption=repokey /path/to/repo
+        borg create /path/to/repo::Monday ~/src ~/Documents
+        borg list /path/to/repo
+        borg list /path/to/repo::Monday
+        borg extract /path/to/repo::Monday
+        borg mount /path/to/repo /mnt/borg
+        </code></pre>
+      </section>
+      <section>
+        <section>
+          <h2>Borgmatic</h2>
+          <p>Easy to manage YAML configuration files instead of bash wrapper scripts</p>
+        </section>
+        <section>
+          <h3>Basic Borgmatic config</h3>
 
-		<title>reveal.js</title>
+          <pre><code class="language-yaml">
+location:
+  source_directories:
+    - "/home"
+  repositories:
+    - "ssh://servy/mnt/storage/backup/borg/compy/root"
+    - "ssh://xxx@xxx.repo.borgbase.com/./repo"
+  exclude_patterns:
+    - "/home/dave/.cache"
+    - "/home/dave/.config/chromium"
+    - "/home/dave/.local/share/Steam"
+    - "/home/dave/.local/share/Trash"
+          </code></pre>
+        </section>
+        <section>
+          <h3>Custom retention schedule</h3>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+          <pre><code class="language-yaml">
+retention:
+  keep_daily: 7
+  keep_weekly: 4
+  keep_monthly: 12
+  keep_yearly: 1
+          </code></pre>
+        </section>
+        <section>
+          <h3>Health checks</h3>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+          <pre><code>
+hooks:
+  healthchecks:
+    ping_url: "https://hc-ping.com/xxx"
+          </code></pre>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+          <p>healthchecks.io (hc-ping.com) is used by Borgmatic for before/after checks. Detects failures to finish as well as failures to start.</p>
+        </section>
+      </section>
+      <section>
+          <h2>Borgbase</h2>
+          <p>Offsite backup with native Borg support.</p>
+          <p>(One downside of BorgBase is that it doesn't support non-filesystem backends like S3)</p>
+      </section>
+      <section>
+        <section>
+          <h2>Ansible</h2>
+          <p>Makes my config repeatable and easier to manage</p>
+        </section>
+        <section>
+          <h3>Server</h3>
+          <pre><code class="language-yaml">
+- name: Ensure borg is installed
+  package: name={{borg_pkg}} state=present
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+- name: Ensure backup directories exist
+  file:
+    state: directory
+    path: "{{backup_server_root_dir}}/{{item.host}}/{{item.user}}"
+    mode: 0700
+    owner: "{{item.user}}"
+    group: "{{item.user}}"
+  with_items: "{{backup_client_configs}}"
+
+- name: Ensure backup keys are authorized
+  authorized_key:
+    state: present
+    user: '{{item.user}}'
+    key: "{{ lookup('file', 'ssh/{{item.user}}/{{item.host}}/id_rsa_backup.pub') }}"
+    key_options: "command=\"borg serve --restrict-to-path {{backup_server_root_dir}}/{{item.host}}/{{item.user}}\",restrict,no-port-forwarding,no-X11-forwarding,no-pty"
+  with_items: "{{backup_client_configs}}"
+          </code></pre>
+        </section>
+        <section>
+          <h3>Client</h3>
+          <pre><code class="language-yaml">
+---
+- name: Ensure borg is installed
+  package: name={{borg_pkg}} state=present
+
+- name: Ensure borgmatic is installed
+  package: name=borgmatic state=present
+
+- name: Ensure llfuse is installed (for mounting backups)
+  package: name={{llfuse_pkg}} state=present
+
+- name: Ensure backup private key is present
+  copy:
+    src: "ssh/{{item.user}}/{{inventory_hostname}}/{{item.ssh_key | default('id_rsa_backup')}}"
+    dest: "{% if item.user == 'root' %}/root{% else %}/home/{{item.user}}{% endif %}/.ssh/{{item.ssh_key | default('id_rsa_backup')}}"
+    mode: 0600
+    owner: "{{item.user}}"
+    group: "{{item.user}}"
+  loop: "{{borgmatic_configs}}"
+  no_log: true
+
+- name: Ensure borgmatic config dir is present
+  file:
+    state: directory
+    name: "{% if item.user == 'root' %}/etc{% else %}/home/{{item.user}}/.config{% endif %}/borgmatic.d"
+    mode: 0755
+    owner: "{{item.user}}"
+    group: "{{item.user}}"
+  loop: "{{borgmatic_configs}}"
+  no_log: true
+
+- name: Ensure backup config is present
+  template:
+    src: "{% if backup_client_use_old_config == true %}borgmatic_config_old.yml.j2{% else %}borgmatic_config.yml.j2{% endif %}"
+    dest: "{% if item.user == 'root' %}/etc{% else %}/home/{{item.user}}/.config{% endif %}/borgmatic.d/{{item.name}}.yml"
+    mode: 0644
+    owner: "{{item.user}}"
+    group: "{{item.user}}"
+  loop: "{{borgmatic_configs}}"
+  no_log: true
+
+- name: Ensure cron task is present in user crontab
+  cron:
+    name: "Backup: {{item.name}}"
+    state: present
+    user: "{{item.user}}"
+    hour: "2"
+    minute: "30"
+    job: "PATH=$PATH:/usr/bin:/usr/local/bin:$HOME/.local/bin borgmatic --syslog-verbosity 1"
+  loop: "{{borgmatic_configs}}"
+  when: item.user != 'root'
+  no_log: true
+
+- name: Ensure daily cron (or anacron) script is in /etc/cron.daily
+  copy:
+    src: daily.sh
+    dest: "/etc/cron.daily/borgmatic"
+    mode: 0755
+  when: item.user == 'root'
+  loop: "{{borgmatic_configs}}"
+  no_log: true
+          </code></pre>
+        </section>
+      </section>
+      <section>
+        <h2>Alternatives</h2>
+        <ul>
+          <li><a href="https://vorta.borgbase.com/">Vorta</a>: MacOS GUI for Borg</li>
+          <li><a href="https://duplicati.com">Duplicati</a>: A similar backup option</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+
+
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+      });
+  </script>
+</body>
 </html>
