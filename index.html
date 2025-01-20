@@ -12,12 +12,25 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+    <style>
+    .highlighted {
+      font-weight: bold;
+      color: red;
+    }
+    text {
+      font-size: 10px;
+      font-family: monospace;
+      user-select: none;
+    }
+    </style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+          Caesar Cipher
+          <div id="app"></div>
+        </section>
 			</div>
 		</div>
 
@@ -36,5 +49,29 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3.5.13/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import { createApp, ref } from 'vue'
+      import CaesarWheel from './caesar-wheel.js'
+      createApp({
+        components: { CaesarWheel },
+        template: `
+          <input type=number min=0 v-model="shift"/>
+          <CaesarWheel highlight="A" :shift="shift"></CaesarWheel>
+        `,
+        setup() {
+          const shift = ref(0);
+
+          return {shift}
+        },
+      }).mount('#app')
+    </script>
+
 	</body>
 </html>
