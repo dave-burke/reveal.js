@@ -59,11 +59,13 @@
     <script type="module">
       import { createApp, ref } from 'vue'
       import CaesarWheel from './caesar-wheel.js'
+      import CaesarStrip from './caesar-strip.js'
       createApp({
-        components: { CaesarWheel },
+        components: { CaesarWheel, CaesarStrip },
         template: `
           <input type=number min=0 v-model="shift"/>
           <CaesarWheel highlight="A" :shift="shift"></CaesarWheel>
+          <CaesarStrip highlight="A" :shift="shift"></CaesarStrip>
         `,
         setup() {
           const shift = ref(0);
